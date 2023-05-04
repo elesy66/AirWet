@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <div class="popup popup_invisible">
+    <div class="popup__window">
+      <div class="popup__header">
+        <button class="popup__close">&times;</button>
+      </div>
+      <div class="popup__content">
+        <div class="popup__message"></div>
+      </div>
+    </div>
+  </div>
+  <div class="preloader preloader_invisible">
+    <svg class="preloader__image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 100 100">
+      <g transform="rotate(0 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-1.0101010101010102s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(32.72727272727273 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.9090909090909091s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(65.45454545454545 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.8080808080808081s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(98.18181818181819 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.7070707070707071s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(130.9090909090909 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.6060606060606061s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(163.63636363636363 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.5050505050505051s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(196.36363636363637 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.40404040404040403s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(229.0909090909091 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.30303030303030304s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(261.8181818181818 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.20202020202020202s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(294.54545454545456 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s"
+            begin="-0.10101010101010101s" repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+      <g transform="rotate(327.27272727272725 50 50)">
+        <rect x="47" y="17.5" rx="0" ry="0" width="6" height="17">
+          <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.1111111111111112s" begin="0s"
+            repeatCount="indefinite"></animate>
+        </rect>
+      </g>
+    </svg>
+  </div>
+  <header class="header">
+    <div class="header__container">
+      <button class="header__toggle">
+        <span class="header__toggle-line"></span>
+        <span class="header__toggle-line"></span>
+        <span class="header__toggle-line"></span>
+      </button>
+      <div class="header__wrapper header__wrapper_invisible">
+        <nav class="header__navbar">
+          <div class="header__navbar-list">
+            <a class="header__navbar-item" href="/?action=state" data-link="state">Состояние</a>
+            <a class="header__navbar-item" href="/?action=control" data-link="control">Управление</a>
+            <a class="header__navbar-item" href="/?action=features" data-link="features">Параметры</a>
+            <a class="header__navbar-item" href="/?action=network" data-link="network">Сеть</a>
+            <a class="header__navbar-item" href="/?action=firmware" data-link="firmware">Прошивка</a>
+            <a class="header__navbar-item" href="/?action=access" data-link="access">Доступ</a>
+          </div>
+        </nav>
+        <button class="header__logout">Выход</button>
+      </div>
+    </div>
+  </header>
+  <main class="main" data-id="features">
+    <div class="container">
+      <div class="features">
+        <h1 class="features__headline">Параметры системы</h1>
+        <div class="features__content">
+          <form class="features__form" data-name="features">
+            <div class="features__form-body">
+              <div class="features__form-params"></div>
+            </div>
+            <div class="features__form-footer">
+              <button class="features__form-cancel" disabled>Отменить</button>
+              <button class="features__form-submit" disabled>Сохранить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

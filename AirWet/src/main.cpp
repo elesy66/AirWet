@@ -213,32 +213,53 @@ void Server_Init ( void )
         Serial.println(" GET request -> no Body");
         
         if ( action == "state" ) {
-          //request->send(SPIFFS, "/state.html");
-          request->send(SD, "/data/state.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/state.html");
+#else
+          
+#endif    request->send(SD, "/data/state.html");      
           Serial.println(" GET request -> no Body -> action = state");
         } else if ( action == "init") {
-          //request->send(SPIFFS, "/init.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/init.html");
+#else
           request->send(SD, "/data/init.html");
+#endif          
           Serial.println(" GET request -> no Body -> action = init");
         } else if ( action == "features") {
-          //request->send(SPIFFS, "/features.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/features.html");
+#else
           request->send(SD, "/data/features.html");
+#endif          
           Serial.println(" GET request -> no Body -> action = features");
         } else if ( action == "network") {
-          //request->send(SPIFFS, "/network.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/network.html");
+#else
           request->send(SD, "/data/network.html");
+#endif          
           Serial.println(" GET request -> no Body -> action = network");
         } else if ( action == "control") {
-          //request->send(SPIFFS, "/control.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/control.html");
+#else
           request->send(SD, "/data/control.html");
+#endif          
           Serial.println(" GET request -> no Body -> action = control");
         } else if ( action == "access") {
-          //request->send(SPIFFS, "/access.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/access.html");
+#else
           request->send(SD, "/data/access.html");
+#endif          
           Serial.println(" GET request -> no Body -> action = access");
         } else if ( action == "firmware") {
-          //request->send(SPIFFS, "/firmware.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/firmware.html");
+#else
           request->send(SD, "/data/firmware.html");
+#endif
           Serial.println(" GET request -> no Body -> action = firmware");
         } else if ( action == "handleState") {
           // отдаем json
@@ -274,8 +295,11 @@ void Server_Init ( void )
 
           // отдаем запродеддде парамет
         } else {
-          //request->send(SPIFFS, "/index.html");
+#if CONFIG_FS == CONFIG_SPIFFS
+          request->send(SPIFFS, "/index.html");
+#else
           request->send(SD, "/data/index.html");
+#endif
         }
     }, NULL,
     [](AsyncWebServerRequest * request, uint8_t *data, size_t len, size_t index, size_t total) {
@@ -283,9 +307,6 @@ void Server_Init ( void )
         String action = request->arg("action");
 
         Serial.println(" GET request -> with Body");
-
-         
-        //request->send(SPIFFS, "/index.html");
   });
   // Send a POST request to <IP>/post with a form field message set to <message>
   server.on("/",HTTP_POST,[](AsyncWebServerRequest * request){
@@ -356,10 +377,18 @@ void Server_Init ( void )
     
         Serial.println(" PUT request -> no Body");
         if ( action == "init" ) {
+#if CONFIG_FS == CONFIG_SPIFFS
           request->send(SPIFFS, "/init.html");
+#else
+          request->send(SD, "/data/init.html");
+#endif          
           Serial.println(" PUT request -> action = init");
         } else if ( action == "access") {
+#if CONFIG_FS == CONFIG_SPIFFS
           request->send(SPIFFS, "/access.html");
+#else
+          request->send(SD, "/data/access.html");
+#endif          
           Serial.println(" PUT request -> action = access");
         } else {
           Serial.println(" PUT request -> action = other");
@@ -388,7 +417,7 @@ void Server_Init ( void )
           }
         } else if ( action == "handleNetwork" ) {
           // выполнить действие для обработки записи параметров в МК
-          Serial.println(" PUT -> handleТуецщклы");
+          Serial.println(" PUT -> handleNetwork");
 
           for (size_t i = 0; i < len; i++) {
             Serial.write(data[i]);
@@ -400,13 +429,19 @@ void Server_Init ( void )
   });
   // URL для файла «style.css»:
   server.on("/css/styles.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    //request->send(SPIFFS, "/css/styles.css", "text/css");
+#if CONFIG_FS == CONFIG_SPIFFS
+    request->send(SPIFFS, "/css/styles.css", "text/css");
+#else
     request->send(SD, "/data/css/styles.css", "text/css");
+#endif
   });
   //js
   server.on("/js/scripts.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    //request->send(SPIFFS, "/js/scripts.js", "text/js");
+#if CONFIG_FS == CONFIG_SPIFFS
+    request->send(SPIFFS, "/js/scripts.js", "text/js");
+#else
     request->send(SD, "/data/js/scripts.js", "text/js");
+#endif    
   });
 
   server.begin();
